@@ -1,0 +1,16 @@
+{% comment %} Create Images Array {% endcomment %}
+
+{% capture productImages %}{{ product.metafields["global"]["image-1"] }},{{ product.metafields["global"]["image-2"] }},{{ product.metafields["global"]["image-3"] }}{% endcapture %}
+{% assign productImages = productImages | split: ',' %}
+
+<div class="extra-images">
+
+  <h3>Extra Images</h3>
+
+  <ul>
+    {% for img in productImages %}
+      <img src="{{ img  }}" />
+    {% endfor %}
+  </ul>
+
+</div>
