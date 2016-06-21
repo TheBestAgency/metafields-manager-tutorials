@@ -1,0 +1,18 @@
+{% comment %} Create Videos Array {% endcomment %}
+
+{% capture productVideos %}{{ product.metafields["global"]["video-1"] }},{{ product.metafields["global"]["video-2"] }}{% endcapture %}
+{% assign productVideos = productVideos | split: ',' %}
+
+<div class="product-videos">
+
+  <h3>Product Videos</h3>
+
+  <ul>
+    {% for video in productVideos %}
+      <video width="320" height="240" controls>
+        <source src="{{ video }}" type="video/mp4">
+      </video>
+    {% endfor %}
+  </ul>
+
+</div>
