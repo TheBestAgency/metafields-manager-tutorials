@@ -1,0 +1,24 @@
+{% comment %} Create Related Products Array {% endcomment %}
+
+{% capture relatedProducts %}{{ product.metafields["global"]["related-product-1"] }},{{ product.metafields["global"]["related-product-2"] }},{{ product.metafields["global"]["related-product-3"] }}{% endcapture %}
+{% assign relatedProducts = relatedProducts | split: ',' %}
+
+{% if relatedProducts.size > 0 %}
+
+<div class="related-products">
+  <h3>Related Products</h3>
+
+  <ul>
+    {% for handle in relatedProducts %}
+      {% assign product = all_products[handle] %}
+
+      {% if product.title != '' %}
+        <li class='slide {% if forloop.index0 < 3 %}active{% endif %}'>{% include "product-grid-item" %}</li>
+      {% endif %}
+
+    {% endfor %}
+  </ul>
+
+</div>
+
+{% endif %}
