@@ -1,0 +1,10 @@
+{% comment %} Create Images Array {% endcomment %}
+
+{% capture pageImages %}{{ page.metafields["global"]["image-1"] }},{{ page.metafields["global"]["image-2"] }},{{ page.metafields["global"]["image-3"] }}{% endcapture %}
+{% assign pageImages = pageImages | split: ',' %}
+
+<ul class="page-images">
+  {% for image in pageImages %}
+  <img src="{{ image }}" />
+  {% endfor %}
+</ul>
