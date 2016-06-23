@@ -1,0 +1,26 @@
+{% comment %} 
+Loop over all slides, change numSlides to the amount of slides you have added 
+{% endcomment %}
+{% assign numSlides = 3 %}
+
+<ul class="slider">
+{% for i in (1..numSlides) %}
+  {% assign slideKey = 'slide-' | append : i | append : '.slide'; %}
+  {% assign slide = article.metafields[slideKey] %}
+
+  <li class="slide">
+    <div>
+      <img src="{{ slide['image'] }}" />
+      <div class="content">
+        <h3>{{ slide['title'] }}</h3>
+        <h5>{{ slide['subtitle'] }}</h5>
+        <a href="{{ slide['cta-href'] }}">{{ slide['cta-title'] }}</a>
+      </div>
+    </div>
+  </li>
+{% endfor %}
+</ul>
+
+{% comment %}
+  This includes the html structure for a slider only. Add CSS and JS to build a slider that fits your needs.
+{% endcomment %}
