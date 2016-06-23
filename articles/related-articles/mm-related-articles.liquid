@@ -1,0 +1,38 @@
+{% comment %} Create Related Articles Array {% endcomment %}
+
+{% capture relatedArticles %}{{ article.metafields["global"]["related-article-1"] }},{{ article.metafields["global"]["related-article-2"] }},{{ article.metafields["global"]["related-article-3"] }}{% endcapture %}
+{% assign relatedArticles = relatedArticles | split: ',' %}
+
+<div class="related-articles">
+
+  <h3>Related Articles</h3>
+
+  <ul>
+    {% comment %} Replace "news" with the name of your blog {% endcomment %}
+    {% for article in blogs.news.articles %}
+      {% assign handle = article.url | split: '/' %}
+      {% assign handle = handle.last %}
+
+      {% if relatedArticles contains handle %}
+      <li>
+        <a href="{{ article.url }}">
+          {% if article.image %}
+            <img src='{{ article | img_url: "thumbnail" }}' />
+          {% endif %}
+        </a>
+
+        <a class="title" href="{{ article.url }}"><h5>{{ article.title }}</h5></a>
+
+        {% if article.excerpt == blank %}
+          <p>{{ article.content | strip_html | truncatewords: 20 }}</p>
+        {% else %}
+          <p>{{ article.excerpt }}</p>
+        {% endif %}
+
+        <a class="read-more" href="{{ article.url }}">read more</a>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+</div>
