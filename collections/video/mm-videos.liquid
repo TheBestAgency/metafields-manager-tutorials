@@ -3,9 +3,9 @@
 {% capture collectionVideos %}{{ collection.metafields["global"]["video-1"] }},{{ collection.metafields["global"]["video-2"] }}{% endcapture %}
 {% assign collectionVideos = collectionVideos | split: ',' %}
 
-<div class="product-videos">
+<div class="collection-videos">
 
-  <h3>Product Videos</h3>
+  <h3>Collection Videos</h3>
 
   <ul>
     {% for video in collectionVideos %}
