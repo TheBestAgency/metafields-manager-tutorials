@@ -1,0 +1,31 @@
+<div class="custom-object">
+
+{% comment %}
+  You could use a loop so the presentation is dynamic
+{% endcomment %}
+
+{% for mf in collection.metafields['custom-object.test'] %}
+  <h3>{{ mf[0] }}</h3>
+  {{ mf[1] }}
+{% endfor %}
+
+{% comment %}
+  Or you can do it manually like the example below
+{% endcomment %}
+
+{% comment %}
+  
+  <h3>File</h3>
+  {{ collection.metafields["custom-object.test"]["test-file"] }}
+  <h3>HTML</h3>
+  {{ collection.metafields["custom-object.test"]["test-html"] }}
+  <h3>Image</h3>
+  {{ collection.metafields["custom-object.test"]["test-image"] }}
+  <h3>String</h3>
+  {{ collection.metafields["custom-object.test"]["test-string"] }}
+  <h3>Integer</h3>
+  {{ collection.metafields["custom-object.test"]["test-integer"] }}
+
+{% endcomment %}
+  
+</div>
